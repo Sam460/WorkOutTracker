@@ -1,0 +1,68 @@
+// components/Reports.js
+import React, { useState } from 'react';
+import { ScrollView, View, Text, TouchableOpacity } from 'react-native';
+import ChartPlaceholder from './ChartPlaceholder';
+import { reportsStyles } from '../styles/reportsStyles';
+import { appStyles } from '../styles/appStyles';
+import { commonStyles } from '../styles/commonStyles';
+import { chartData } from '../constants/data';
+
+const Reports = () => {
+  const [reportPeriod, setReportPeriod] = useState('weekly');
+
+  return (
+    <ScrollView style={appStyles.contentContainer}>
+      <Text style={appStyles.heading}>Performance Reports</Text>
+      <Text style={appStyles.subHeading}>Analyze your progress over time with detailed charts.</Text>
+
+      <View style={commonStyles.card}>
+        <View style={reportsStyles.reportHeader}>
+          <View>
+            <Text style={commonStyles.cardTitle}>Workout Duration</Text>
+            <Text style={commonStyles.cardDescription}>Track the total minutes you've exercised over different periods.</Text>
+          </View>
+          <View style={reportsStyles.buttonGroup}>
+            <TouchableOpacity
+              style={[reportsStyles.filterButton, reportPeriod === 'weekly' && reportsStyles.filterButtonActive]}
+              onPress={() => setReportPeriod('weekly')}
+            >
+              <Text style={[reportsStyles.filterButtonText, reportPeriod === 'weekly' && reportsStyles.filterButtonTextActive]}>Weekly</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[reportsStyles.filterButton, reportPeriod === 'monthly' && reportsStyles.filterButtonActive]}
+              onPress={() => setReportPeriod('monthly')}
+            >
+              <Text style={[reportsStyles.filterButtonText, reportPeriod === 'monthly' && reportsStyles.filterButtonTextActive]}>Monthly</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <ChartPlaceholder
+          title="Workout Duration Trend"
+          description=""
+          type="line"
+          data={{
+            labels: chartData[reportPeriod].labels,
+            datasets: [{ data: chartData[reportPeriod].duration }]
+          }}
+        />
+      </View>
+
+      <View style={commonStyles.card}>
+        <Text style={commonStyles.cardTitle}>Calories Burned</Text>
+        <Text style={commonStyles.cardDescription}>This chart compares the calories you've burned each day this week. Use it to spot trends and stay motivated.</Text>
+        <ChartPlaceholder
+          title="Calories Burned Trend"
+          description=""
+          type="bar"
+          data={{
+            labels: chartData.weekly.labels,
+            datasets: [{ data: chartData.weekly.calories }]
+          }}
+        />
+      </View>
+    </ScrollView>
+  );
+};
+
+export default Reports;
+
