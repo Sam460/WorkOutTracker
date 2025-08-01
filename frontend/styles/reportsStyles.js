@@ -6,33 +6,40 @@ export const reportsStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 15,
+    marginBottom: 20,
+    flexWrap: 'wrap',
+    gap: 8,
   },
+
   buttonGroup: {
     flexDirection: 'row',
-    backgroundColor: '#f3f4f6',
-    borderRadius: 8,
-    padding: 3,
+    backgroundColor: '#eef2ff',
+    borderRadius: 10,
+    padding: 4,
   },
+
   filterButton: {
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 6,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 8,
   },
+
   filterButtonActive: {
     backgroundColor: '#ffffff',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 2,
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
+
   filterButtonText: {
     fontSize: 14,
     color: '#6b7280',
   },
+
   filterButtonTextActive: {
-    color: '#3b82f6',
+    color: '#2d68f2',
     fontWeight: 'bold',
   },
 });

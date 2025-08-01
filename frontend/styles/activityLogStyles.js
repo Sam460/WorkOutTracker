@@ -5,11 +5,11 @@ export const activityLogStyles = StyleSheet.create({
   tableHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: 10,
+    paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
-    marginBottom: 5,
+    borderBottomColor: '#e0e4e7',
   },
+
   tableHeaderText: {
     fontWeight: 'bold',
     fontSize: 12,
@@ -17,19 +17,22 @@ export const activityLogStyles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
   },
+
   tableRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: 10,
+    paddingVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#f3f4f6',
+    borderBottomColor: '#f4f7f9',
   },
+
   tableCell: {
     fontSize: 14,
     color: '#4b5563',
     flex: 1,
     textAlign: 'center',
   },
+
   tableCellBold: {
     fontSize: 14,
     color: '#1f2937',
@@ -37,6 +40,7 @@ export const activityLogStyles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
   },
+
   tableCellSmall: {
     fontSize: 12,
     color: '#9ca3af',

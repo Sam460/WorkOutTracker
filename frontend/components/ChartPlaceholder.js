@@ -1,14 +1,20 @@
 // components/ChartPlaceholder.js
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 
-const ChartPlaceholder = ({ title, description, type, data }) => (
+const screenWidth = Dimensions.get('window').width;
+
+const ChartPlaceholder = ({ title, description, type }) => (
   <View style={styles.chartSection}>
     <Text style={styles.chartTitle}>{title}</Text>
     {description && <Text style={styles.chartDescription}>{description}</Text>}
     <View style={styles.chartContainer}>
       <Text style={styles.chartVisualText}>
-        {type === 'line' ? 'LINE CHART VISUAL' : type === 'bar' ? 'BAR CHART VISUAL' : 'DOUGHNUT CHART VISUAL'}
+        {type === 'line'
+          ? 'LINE CHART HERE'
+          : type === 'bar'
+          ? 'BAR CHART HERE'
+          : 'DOUGHNUT CHART HERE'}
       </Text>
     </View>
   </View>
@@ -18,32 +24,34 @@ const styles = StyleSheet.create({
   chartSection: {
     backgroundColor: '#ffffff',
     padding: 20,
-    borderRadius: 12,
+    borderRadius: 16,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 5,
     marginBottom: 25,
+    width: screenWidth - 30,
+    alignSelf: 'center',
   },
   chartContainer: {
     height: 250,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f9fafb',
-    borderRadius: 8,
+    borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: '#e0e4e7',
     marginTop: 15,
   },
   chartTitle: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: '700',
     marginBottom: 5,
     color: '#1f2937',
   },
   chartDescription: {
-    fontSize: 13,
+    fontSize: 14,
     color: '#4b5563',
     marginBottom: 10,
   },

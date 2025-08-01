@@ -1,48 +1,99 @@
 // components/Reports.js
 import React, { useState } from 'react';
-import { ScrollView, View, Text, TouchableOpacity } from 'react-native';
-import ChartPlaceholder from './ChartPlaceholder';
+import { ScrollView, View, Text, TouchableOpacity, Dimensions } from 'react-native';
+import { LineChart } from 'react-native-chart-kit';
 import { reportsStyles } from '../styles/reportsStyles';
 import { appStyles } from '../styles/appStyles';
 import { commonStyles } from '../styles/commonStyles';
 import { chartData } from '../constants/data';
 
+const screenWidth = Dimensions.get('window').width;
+
 const Reports = () => {
   const [reportPeriod, setReportPeriod] = useState('weekly');
+  const currentData = chartData[reportPeriod];
 
   return (
     <ScrollView contentContainerStyle={appStyles.contentContainer}>
-      <Text style={appStyles.headerTitle}>Reports</Text>
-      <Text style={appStyles.headerSubtitle}>Analyze your progress over time with detailed charts.</Text>
-
       <View style={commonStyles.card}>
+        {/* Header Section */}
         <View style={reportsStyles.reportHeader}>
           <View>
             <Text style={commonStyles.cardTitle}>Workout Duration</Text>
-            <Text style={commonStyles.cardDescription}>Track the total minutes you've exercised over different periods.</Text>
+            <Text style={commonStyles.cardDescription}>
+              Track your total minutes exercised over different periods.
+            </Text>
           </View>
+
+          {/* Toggle Buttons */}
           <View style={reportsStyles.buttonGroup}>
             <TouchableOpacity
-              style={[reportsStyles.filterButton, reportPeriod === 'weekly' && reportsStyles.filterButtonActive]}
+              style={[
+                reportsStyles.filterButton,
+                reportPeriod === 'weekly' && reportsStyles.filterButtonActive,
+              ]}
               onPress={() => setReportPeriod('weekly')}
             >
-              <Text style={[reportsStyles.filterButtonText, reportPeriod === 'weekly' && reportsStyles.filterButtonTextActive]}>Weekly</Text>
+              <Text
+                style={[
+                  reportsStyles.filterButtonText,
+                  reportPeriod === 'weekly' && reportsStyles.filterButtonTextActive,
+                ]}
+              >
+                Weekly
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={[reportsStyles.filterButton, reportPeriod === 'monthly' && reportsStyles.filterButtonActive]}
+              style={[
+                reportsStyles.filterButton,
+                reportPeriod === 'monthly' && reportsStyles.filterButtonActive,
+              ]}
               onPress={() => setReportPeriod('monthly')}
             >
-              <Text style={[reportsStyles.filterButtonText, reportPeriod === 'monthly' && reportsStyles.filterButtonTextActive]}>Monthly</Text>
+              <Text
+                style={[
+                  reportsStyles.filterButtonText,
+                  reportPeriod === 'monthly' && reportsStyles.filterButtonTextActive,
+                ]}
+              >
+                Monthly
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
-        <ChartPlaceholder
-          title="Workout Duration Trend"
-          description=""
-          type="line"
+
+        {/* Chart Section */}
+        <LineChart
           data={{
-            labels: chartData[reportPeriod].labels,
-            datasets: [{ data: chartData[reportPeriod].duration }]
+            labels: currentData.labels,
+            datasets: [
+              {
+                data: currentData.duration,
+                strokeWidth: 2,
+                color: () => '#3b82f6',
+              },
+            ],
+            legend: ['Workout Duration (min)'],
+          }}
+          width={screenWidth - 40}
+          height={240}
+          yAxisSuffix="m"
+          chartConfig={{
+            backgroundColor: '#fff',
+            backgroundGradientFrom: '#fff',
+            backgroundGradientTo: '#fff',
+            decimalPlaces: 0,
+            color: (opacity = 1) => `rgba(31, 41, 55, ${opacity})`,
+            labelColor: () => '#6b7280',
+            propsForDots: {
+              r: '4',
+              strokeWidth: '2',
+              stroke: '#ffffff',
+            },
+          }}
+          style={{
+            borderRadius: 16,
+            marginTop: 10,
           }}
         />
       </View>

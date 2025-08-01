@@ -1,5 +1,7 @@
 // styles/dashboardStyles.js
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const screenWidth = Dimensions.get('window').width;
 
 export const dashboardStyles = StyleSheet.create({
   metricContainer: {
@@ -8,40 +10,47 @@ export const dashboardStyles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 20,
   },
+
   metricCard: {
-    width: '48%', // For two cards per row
+    width: screenWidth < 768 ? '48%' : '30%', // Responsive: 2 on mobile, 3 on tablet/desktop
     marginBottom: 15,
     backgroundColor: '#ffffff',
-    padding: 15,
-    borderRadius: 12,
+    padding: 20,
+    borderRadius: 16,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 5,
   },
+
   metricHeader: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 10,
   },
+
   metricIcon: {
-    fontSize: 24,
+    fontSize: 28,
     marginRight: 10,
   },
+
   metricName: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '600',
     color: '#4b5563',
   },
+
   metricValue: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: 'bold',
     color: '#1f2937',
-    marginTop: 10,
-  },
-  metricUnit: {
-    fontSize: 14,
-    color: '#6b7280',
     marginTop: 5,
+  },
+
+  metricUnit: {
+    fontSize: 16,
+    color: '#6b7280',
+    marginTop: 2,
   },
 });
