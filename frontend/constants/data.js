@@ -1,37 +1,37 @@
 // constants/data.js
 
-// Realistic chart data for weekly and monthly workout durations and calories.
-// This data is 'functional' in the sense that it represents typical fitness tracking data.
+// Mock data for Dashboard metrics
+export const dashboardMetrics = [
+  { id: '1', name: 'Steps', value: 7500, goal: 10000, unit: 'steps', icon: '👟' },
+  { id: '2', name: 'Calories', value: 540, goal: 800, unit: 'kcal', icon: '🔥' },
+  { id: '3', name: 'Water Intake', value: 1.8, goal: 2.5, unit: 'L', icon: '💧' },
+];
+
+// Mock data for charts
 export const chartData = {
   weekly: {
     labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    duration: [35, 50, 65, 30, 75, 40, 95], // Duration in minutes
-    calories: [380, 550, 700, 320, 800, 450, 1000], // Calories burned
+    duration: [30, 45, 60, 40, 50, 70, 60], // in minutes
+    calories: [350, 420, 550, 380, 480, 650, 590], // in kcal
   },
   monthly: {
     labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-    duration: [280, 350, 310, 380], // Total duration per week in minutes
-  },
-  stepsGoal: {
-    current: 7890, // Current steps
-    goal: 10000,    // Daily step goal
+    duration: [210, 250, 280, 220],
   },
 };
 
-// Initial activity log data with realistic workout entries.
+// Mock data for activity log
 export const initialActivityLogData = [
-  { type: 'Running', duration: 45, calories: 500, date: '2025-07-28' },
-  { type: 'Weight Training', duration: 60, calories: 450, date: '2025-07-27' },
-  { type: 'Cycling', duration: 75, calories: 650, date: '2025-07-26' },
-  { type: 'Yoga', duration: 30, calories: 180, date: '2025-07-25' },
-  { type: 'Swimming', duration: 40, calories: 400, date: '2025-07-24' },
+  { type: 'Running', duration: 45, calories: 420, date: '2025-07-28' },
+  { type: 'Weightlifting', duration: 60, calories: 550, date: '2025-07-27' },
+  { type: 'Yoga', duration: 30, calories: 150, date: '2025-07-26' },
+  { type: 'Cycling', duration: 50, calories: 480, date: '2025-07-25' },
 ];
 
-// Initial schedule data for upcoming activities.
+// Mock data for schedule
 export const initialScheduleData = [
-  { time: 'Tomorrow, 8:00 AM', activity: 'Morning Run (5k)', details: 'Park loop, focus on pace' },
-  { time: 'July 31, 6:00 PM', activity: 'Gym Session', details: 'Leg day: squats, lunges, deadlifts' },
-  { time: 'August 01, 10:00 AM', activity: 'Yoga Class', details: 'Vinyasa flow at local studio' },
-  { time: 'August 02, 7:30 AM', activity: 'Cycling', details: 'Scenic route, 20km' },
-  { time: 'August 03, 9:00 AM', activity: 'Rest Day', details: 'Active recovery: light stretching' },
+  { id: '1', activity: 'Morning Run', details: '30 minute jog in the park', time: '8:00 AM' },
+  { id: '2', activity: 'Gym Session', details: 'Upper body workout', time: '6:00 PM' },
+  { id: '3', activity: 'Yoga Class', details: 'Hatha yoga with a friend', time: '7:30 PM' },
 ];
+

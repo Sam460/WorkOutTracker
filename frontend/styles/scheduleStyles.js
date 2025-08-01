@@ -3,26 +3,23 @@ import { StyleSheet } from 'react-native';
 
 export const scheduleStyles = StyleSheet.create({
   scheduleItem: {
-    padding: 15,
-    borderLeftWidth: 4,
-    borderLeftColor: '#3b82f6', // Blue-500 equivalent
-    backgroundColor: '#eff6ff', // Blue-50 equivalent
-    borderRadius: 8,
-    marginBottom: 10,
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f3f4f6',
   },
   scheduleActivity: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#1e40af', // Blue-800 equivalent
+    color: '#1f2937',
   },
   scheduleDetails: {
     fontSize: 14,
-    color: '#4b5563', // Gray-600 equivalent
+    color: '#6b7280',
     marginTop: 2,
   },
   scheduleTime: {
     fontSize: 12,
-    color: '#6b7280', // Gray-500 equivalent
+    color: '#9ca3af',
     marginTop: 5,
   },
 });

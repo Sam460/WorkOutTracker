@@ -4,67 +4,65 @@ import { StyleSheet } from 'react-native';
 export const commonStyles = StyleSheet.create({
   card: {
     backgroundColor: '#ffffff',
-    padding: 20,
     borderRadius: 12,
+    padding: 20,
+    marginBottom: 20,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.05,
     shadowRadius: 2,
     elevation: 3,
-    marginBottom: 25,
   },
   cardTitle: {
     fontSize: 18,
     fontWeight: '600',
     marginBottom: 5,
-    color: '#1f2937', // Gray-800 equivalent
+    color: '#1f2937',
   },
   cardDescription: {
     fontSize: 13,
-    color: '#4b5563', // Gray-600 equivalent
+    color: '#6b7280',
     marginBottom: 10,
   },
   primaryButton: {
-    backgroundColor: '#2563eb', // Blue-600 equivalent
-    paddingVertical: 12,
-    paddingHorizontal: 20,
+    backgroundColor: '#3b82f6',
+    padding: 15,
     borderRadius: 8,
-    alignSelf: 'flex-end',
-    marginBottom: 20,
+    alignItems: 'center',
+    marginTop: 15,
   },
   primaryButtonText: {
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
   secondaryButton: {
-    backgroundColor: '#10b981', // Green-600 equivalent
-    paddingVertical: 12,
-    paddingHorizontal: 20,
+    backgroundColor: '#e5e7eb',
+    padding: 15,
     borderRadius: 8,
-    alignSelf: 'flex-end',
+    alignItems: 'center',
     marginTop: 15,
   },
   secondaryButtonText: {
-    color: '#ffffff',
+    color: '#3b82f6',
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
   formGroup: {
     marginBottom: 15,
   },
   formLabel: {
     fontSize: 14,
-    fontWeight: '500',
-    color: '#374151', // Gray-700 equivalent
+    color: '#4b5563',
     marginBottom: 5,
   },
   formInput: {
     borderWidth: 1,
-    borderColor: '#d1d5db', // Gray-300 equivalent
-    borderRadius: 6,
-    padding: 10,
+    borderColor: '#d1d5db',
+    borderRadius: 8,
+    padding: 12,
+    backgroundColor: '#f9fafb',
     fontSize: 16,
-    backgroundColor: '#ffffff',
+    color: '#1f2937',
   },
 });

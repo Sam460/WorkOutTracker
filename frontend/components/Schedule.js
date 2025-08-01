@@ -8,9 +8,9 @@ import { initialScheduleData } from '../constants/data';
 
 const Schedule = () => {
   return (
-    <ScrollView style={appStyles.contentContainer}>
-      <Text style={appStyles.heading}>Your Schedule</Text>
-      <Text style={appStyles.subHeading}>Here are your upcoming appointments and reminders to help you stay on track.</Text>
+    <ScrollView contentContainerStyle={appStyles.contentContainer}>
+      <Text style={appStyles.headerTitle}>Your Schedule</Text>
+      <Text style={appStyles.headerSubtitle}>Here are your upcoming activities.</Text>
       <View style={commonStyles.card}>
         {initialScheduleData.map((item, index) => (
           <View key={index} style={scheduleStyles.scheduleItem}>

@@ -1,62 +1,47 @@
 // styles/dashboardStyles.js
-import { StyleSheet, Dimensions } from 'react-native';
-
-const windowWidth = Dimensions.get('window').width;
+import { StyleSheet } from 'react-native';
 
 export const dashboardStyles = StyleSheet.create({
-  metricsGrid: {
+  metricContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginBottom: 25,
+    marginBottom: 20,
   },
   metricCard: {
+    width: '48%', // For two cards per row
+    marginBottom: 15,
     backgroundColor: '#ffffff',
-    padding: 20,
+    padding: 15,
     borderRadius: 12,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.05,
     shadowRadius: 2,
     elevation: 3,
+  },
+  metricHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: (windowWidth - 80) / 2 - 10, // Adjust for padding and gap on small screens
-    marginBottom: 15,
-    ...(windowWidth >= 768 && {
-      width: (windowWidth - 250 - 80) / 4 - 15, // Adjust for sidebar, padding and gap on larger screens
-    }),
   },
-  iconCircle: {
-    padding: 12,
-    borderRadius: 9999, // Full rounded
-    marginRight: 15,
+  metricIcon: {
+    fontSize: 24,
+    marginRight: 10,
   },
-  iconText: {
-    fontSize: 20,
-  },
-  metricLabel: {
-    fontSize: 13,
-    color: '#6b7280', // Gray-500 equivalent
+  metricName: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#4b5563',
   },
   metricValue: {
-    fontSize: 22,
+    fontSize: 28,
     fontWeight: 'bold',
-    color: '#1f2937', // Gray-800 equivalent
+    color: '#1f2937',
+    marginTop: 10,
   },
   metricUnit: {
     fontSize: 14,
-    fontWeight: 'normal',
-  },
-  chartSection: {
-    backgroundColor: '#ffffff',
-    padding: 20,
-    borderRadius: 12,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 3,
-    marginBottom: 25,
+    color: '#6b7280',
+    marginTop: 5,
   },
 });

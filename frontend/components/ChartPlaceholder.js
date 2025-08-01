@@ -7,20 +7,9 @@ const ChartPlaceholder = ({ title, description, type, data }) => (
     <Text style={styles.chartTitle}>{title}</Text>
     {description && <Text style={styles.chartDescription}>{description}</Text>}
     <View style={styles.chartContainer}>
-      {/* Making the text larger and more visible for debugging */}
       <Text style={styles.chartVisualText}>
         {type === 'line' ? 'LINE CHART VISUAL' : type === 'bar' ? 'BAR CHART VISUAL' : 'DOUGHNUT CHART VISUAL'}
       </Text>
-      {data && data.datasets && data.datasets[0] && (
-        <Text style={styles.chartVisualTextSmall}>
-          Data Received: {JSON.stringify(data.datasets[0].data)}
-        </Text>
-      )}
-      {!data || !data.datasets || !data.datasets[0] && (
-        <Text style={styles.chartVisualTextSmall}>
-          (No data prop or empty datasets)
-        </Text>
-      )}
     </View>
   </View>
 );
@@ -38,10 +27,10 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   chartContainer: {
-    height: 250, // Fixed height for chart placeholder
+    height: 250,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f9fafb', // Light gray background for chart area
+    backgroundColor: '#f9fafb',
     borderRadius: 8,
     borderWidth: 1,
     borderColor: '#e5e7eb',
@@ -59,18 +48,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   chartVisualText: {
-    color: '#3b82f6', // Distinct blue color
-    fontSize: 20, // Larger font size
+    color: '#6b7280',
+    fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 5,
   },
-  chartVisualTextSmall: {
-    color: '#6b7280', // Gray color for data
-    fontSize: 14, // Slightly larger for visibility
-    textAlign: 'center',
-    marginTop: 5,
-  }
 });
 
 export default ChartPlaceholder;

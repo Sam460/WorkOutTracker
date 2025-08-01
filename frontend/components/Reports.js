@@ -11,9 +11,9 @@ const Reports = () => {
   const [reportPeriod, setReportPeriod] = useState('weekly');
 
   return (
-    <ScrollView style={appStyles.contentContainer}>
-      <Text style={appStyles.heading}>Performance Reports</Text>
-      <Text style={appStyles.subHeading}>Analyze your progress over time with detailed charts.</Text>
+    <ScrollView contentContainerStyle={appStyles.contentContainer}>
+      <Text style={appStyles.headerTitle}>Reports</Text>
+      <Text style={appStyles.headerSubtitle}>Analyze your progress over time with detailed charts.</Text>
 
       <View style={commonStyles.card}>
         <View style={reportsStyles.reportHeader}>
@@ -46,23 +46,8 @@ const Reports = () => {
           }}
         />
       </View>
-
-      <View style={commonStyles.card}>
-        <Text style={commonStyles.cardTitle}>Calories Burned</Text>
-        <Text style={commonStyles.cardDescription}>This chart compares the calories you've burned each day this week. Use it to spot trends and stay motivated.</Text>
-        <ChartPlaceholder
-          title="Calories Burned Trend"
-          description=""
-          type="bar"
-          data={{
-            labels: chartData.weekly.labels,
-            datasets: [{ data: chartData.weekly.calories }]
-          }}
-        />
-      </View>
     </ScrollView>
   );
 };
 
 export default Reports;
-

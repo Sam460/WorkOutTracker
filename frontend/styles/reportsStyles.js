@@ -10,24 +10,29 @@ export const reportsStyles = StyleSheet.create({
   },
   buttonGroup: {
     flexDirection: 'row',
+    backgroundColor: '#f3f4f6',
     borderRadius: 8,
-    overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: '#d1d5db',
+    padding: 3,
   },
   filterButton: {
     paddingVertical: 8,
-    paddingHorizontal: 15,
-    backgroundColor: '#e5e7eb', // Gray-200 equivalent
+    paddingHorizontal: 12,
+    borderRadius: 6,
   },
   filterButtonActive: {
-    backgroundColor: '#3b82f6', // Blue-500 equivalent
+    backgroundColor: '#ffffff',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 2,
   },
   filterButtonText: {
-    color: '#374151', // Gray-700 equivalent
     fontSize: 14,
+    color: '#6b7280',
   },
   filterButtonTextActive: {
-    color: '#ffffff',
+    color: '#3b82f6',
+    fontWeight: 'bold',
   },
 });

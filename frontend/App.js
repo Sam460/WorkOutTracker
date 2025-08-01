@@ -1,15 +1,16 @@
 // App.js
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
-import { appStyles } from './styles/appStyles';
 import Dashboard from './components/Dashboard';
 import Reports from './components/Reports';
 import ActivityLog from './components/ActivityLog';
 import Schedule from './components/Schedule';
+import { appStyles } from './styles/appStyles';
 
 const App = () => {
   const [activeView, setActiveView] = useState('dashboard');
 
+  // Function to render the active component based on the state
   const renderActiveView = () => {
     switch (activeView) {
       case 'dashboard':
@@ -28,52 +29,43 @@ const App = () => {
   return (
     <SafeAreaView style={appStyles.safeArea}>
       <View style={appStyles.container}>
-        {/* Sidebar Navigation (or Top Bar on small screens) */}
-        <View style={appStyles.sidebar}>
-          <View style={appStyles.logoContainer}>
-            <Text style={appStyles.logoText}>FitTrack</Text>
-            <Text style={appStyles.tagline}>Your Health Companion</Text>
-          </View>
-          <View style={appStyles.navLinks}>
-            <TouchableOpacity
-              style={[appStyles.navLink, activeView === 'dashboard' && appStyles.navLinkActive]}
-              onPress={() => setActiveView('dashboard')}
-            >
-              <Text style={[appStyles.navLinkText, activeView === 'dashboard' && appStyles.navLinkTextActive]}>📊 Dashboard</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[appStyles.navLink, activeView === 'reports' && appStyles.navLinkActive]}
-              onPress={() => setActiveView('reports')}
-            >
-              <Text style={[appStyles.navLinkText, activeView === 'reports' && appStyles.navLinkTextActive]}>📈 Reports</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[appStyles.navLink, activeView === 'activity' && appStyles.navLinkActive]}
-              onPress={() => setActiveView('activity')}
-            >
-              <Text style={[appStyles.navLinkText, activeView === 'activity' && appStyles.navLinkTextActive]}>🏃 Activity Log</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[appStyles.navLink, activeView === 'schedule' && appStyles.navLinkActive]}
-              onPress={() => setActiveView('schedule')}
-            >
-              <Text style={[appStyles.navLinkText, activeView === 'schedule' && appStyles.navLinkTextActive]}>🗓️ Schedule</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={appStyles.profileContainer}>
-            <View style={appStyles.avatarPlaceholder}>
-              <Text style={appStyles.avatarText}>AV</Text>
-            </View>
-            <View style={appStyles.profileInfo}>
-              <Text style={appStyles.profileName}>Alex Doe</Text>
-              <Text style={appStyles.profileStatus}>Premium User</Text>
-            </View>
-          </View>
+        {/* Top Header */}
+        <View style={appStyles.header}>
+          <Text style={appStyles.headerTitle}>FitTrack</Text>
+          <Text style={appStyles.headerSubtitle}>Your Health Companion</Text>
         </View>
 
-        {/* Main Content Area */}
+        {/* Main Content Area - This is where the active view is rendered */}
         <View style={appStyles.mainContent}>
           {renderActiveView()}
+        </View>
+
+        {/* Bottom Navigation Bar */}
+        <View style={appStyles.bottomNav}>
+          <TouchableOpacity
+            style={appStyles.navButton}
+            onPress={() => setActiveView('dashboard')}
+          >
+            <Text style={[appStyles.navText, activeView === 'dashboard' && appStyles.navTextActive]}>📊 Dashboard</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={appStyles.navButton}
+            onPress={() => setActiveView('reports')}
+          >
+            <Text style={[appStyles.navText, activeView === 'reports' && appStyles.navTextActive]}>📈 Reports</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={appStyles.navButton}
+            onPress={() => setActiveView('activity')}
+          >
+            <Text style={[appStyles.navText, activeView === 'activity' && appStyles.navTextActive]}>🏃 Activity Log</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={appStyles.navButton}
+            onPress={() => setActiveView('schedule')}
+          >
+            <Text style={[appStyles.navText, activeView === 'schedule' && appStyles.navTextActive]}>🗓️ Schedule</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

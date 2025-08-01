@@ -9,19 +9,20 @@ import { initialActivityLogData } from '../constants/data';
 const ActivityLog = () => {
   const [activityLogData, setActivityLogData] = useState(initialActivityLogData);
   const [showLogForm, setShowLogForm] = useState(false);
-  const [newActivityType, setNewActivityType] = useState('Running');
+  const [newActivityType, setNewActivityType] = useState('');
   const [newActivityDuration, setNewActivityDuration] = useState('');
   const [newActivityCalories, setNewActivityCalories] = useState('');
 
   const handleLogActivity = () => {
-    if (newActivityDuration && newActivityCalories) {
+    if (newActivityType && newActivityDuration && newActivityCalories) {
       const newActivity = {
         type: newActivityType,
         duration: parseInt(newActivityDuration),
         calories: parseInt(newActivityCalories),
         date: new Date().toISOString().split('T')[0], // Get current date in YYYY-MM-DD format
       };
-      setActivityLogData([newActivity, ...activityLogData]); // Add new activity to the top
+      setActivityLogData([newActivity, ...activityLogData]);
+      setNewActivityType('');
       setNewActivityDuration('');
       setNewActivityCalories('');
       setShowLogForm(false);
@@ -29,9 +30,9 @@ const ActivityLog = () => {
   };
 
   return (
-    <ScrollView style={appStyles.contentContainer}>
-      <Text style={appStyles.heading}>Activity Log</Text>
-      <Text style={appStyles.subHeading}>Keep a record of all your workouts. Log a new one to keep your history up to date.</Text>
+    <ScrollView contentContainerStyle={appStyles.contentContainer}>
+      <Text style={appStyles.headerTitle}>Activity Log</Text>
+      <Text style={appStyles.headerSubtitle}>Keep a record of all your workouts.</Text>
 
       <TouchableOpacity
         style={commonStyles.primaryButton}
@@ -45,8 +46,6 @@ const ActivityLog = () => {
           <Text style={commonStyles.cardTitle}>Log a New Workout</Text>
           <View style={commonStyles.formGroup}>
             <Text style={commonStyles.formLabel}>Workout Type</Text>
-            {/* In a real app, use Picker or custom dropdown for workout type.
-                For simplicity here, it's a TextInput. */}
             <TextInput
               style={commonStyles.formInput}
               value={newActivityType}
@@ -75,10 +74,10 @@ const ActivityLog = () => {
             />
           </View>
           <TouchableOpacity
-            style={commonStyles.secondaryButton}
+            style={commonStyles.primaryButton}
             onPress={handleLogActivity}
           >
-            <Text style={commonStyles.secondaryButtonText}>Save Activity</Text>
+            <Text style={commonStyles.primaryButtonText}>Save Activity</Text>
           </TouchableOpacity>
         </View>
       )}
