@@ -1,17 +1,22 @@
 // App.js
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import Dashboard from './components/Dashboard';
 import Reports from './components/Reports';
 import ActivityLog from './components/ActivityLog';
 import Schedule from './components/Schedule';
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 import { appStyles } from './styles/appStyles';
+import { AuthProvider, AuthContext } from './context/AuthContext';
 
 const windowWidth = Dimensions.get('window').width;
 const isDesktop = windowWidth >= 768;
 
-const App = () => {
+const MainApp = () => {
+  const { user, logout } = useContext(AuthContext);
   const [activeView, setActiveView] = useState('dashboard');
+  const [authView, setAuthView] = useState(null); // null | 'login' | 'register'
 
   const renderActiveView = () => {
     switch (activeView) {
@@ -38,6 +43,40 @@ const App = () => {
     </TouchableOpacity>
   );
 
+  const renderAuthOverlay = () => {
+    if (!authView) return null;
+    return (
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: '#ffffffee', justifyContent: 'center' }}>
+        {authView === 'login' ? <LoginScreen /> : <RegisterScreen />}
+        <TouchableOpacity
+          onPress={() => setAuthView(authView === 'login' ? 'register' : 'login')}
+          style={{ alignItems: 'center', marginTop: 16 }}
+        >
+          <Text style={{ color: '#2d68f2' }}>
+            {authView === 'login' ? "Don't have an account? Register" : 'Already have an account? Login'}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setAuthView(null)} style={{ alignItems: 'center', marginTop: 8 }}>
+          <Text style={{ color: '#ef4444' }}>Close</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
+  const renderProfileIcon = () => (
+    <TouchableOpacity
+      onPress={() => {
+        if (user) logout();
+        else setAuthView('login');
+      }}
+      style={appStyles.profileIcon}
+    >
+      <Text style={{ color: '#1e3a8a', fontWeight: 'bold' }}>
+        {user?.username?.substring(0, 2).toUpperCase() || '👤'}
+      </Text>
+    </TouchableOpacity>
+  );
+
   return (
     <SafeAreaView style={appStyles.safeArea}>
       <View style={appStyles.container}>
@@ -47,26 +86,21 @@ const App = () => {
               <Text style={appStyles.logoText}>FitTrack</Text>
               <Text style={appStyles.tagline}>Your Health Companion</Text>
             </View>
+
             <View style={appStyles.navLinks}>
               {navLink('dashboard', '📊', 'Dashboard')}
               {navLink('reports', '📈', 'Reports')}
               {navLink('activity', '🏃', 'Activity Log')}
               {navLink('schedule', '🗓️', 'Schedule')}
             </View>
-            <View style={appStyles.profileContainer}>
-              <View style={appStyles.avatarPlaceholder}>
-                <Text style={appStyles.avatarText}>AB</Text>
-              </View>
-              <View style={appStyles.profileInfo}>
-                <Text style={appStyles.profileName}>Alex Biswas</Text>
-                <Text style={appStyles.profileStatus}>Premium User</Text>
-              </View>
-            </View>
           </View>
         )}
 
         <View style={appStyles.mainContent}>
-          <Text style={appStyles.mainTitle}>{activeView.charAt(0).toUpperCase() + activeView.slice(1)}</Text>
+          <Text style={appStyles.mainTitle}>
+            {activeView.charAt(0).toUpperCase() + activeView.slice(1)}
+          </Text>
+          {renderProfileIcon()}
           {renderActiveView()}
         </View>
 
@@ -79,8 +113,16 @@ const App = () => {
           </View>
         )}
       </View>
+
+      {renderAuthOverlay()}
     </SafeAreaView>
   );
 };
 
-export default App;
+export default function App() {
+  return (
+    <AuthProvider>
+      <MainApp />
+    </AuthProvider>
+  );
+}

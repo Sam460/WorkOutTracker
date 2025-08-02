@@ -39,18 +39,19 @@ export const appStyles = StyleSheet.create({
     fontSize: 24 * scale,
     fontWeight: 'bold',
     color: '#2563eb',
+    marginTop: 10,
   },
 
   headerSubtitle: {
     fontSize: 12 * scale,
     color: '#6b7280',
-    marginTop: 4,
+    marginTop: 15,
   },
 
   mainContent: {
     flex: 1,
     paddingHorizontal: 12 * scale,
-    paddingTop: 10 * scale,
+    paddingTop: 40 * scale, // lifted from 10 to 40
     paddingBottom: width < 768 ? 70 : 20,
   },
 
@@ -61,17 +62,17 @@ export const appStyles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderTopWidth: 1,
     borderTopColor: '#e5e7eb',
-    paddingVertical: 10,
+    paddingVertical: 9,
     position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
+    bottom: 35,
+    left: 5,
+    right: 5,
     ...Platform.select({
       ios: {
         shadowColor: '#000',
         shadowOffset: { width: 0, height: -1 },
         shadowOpacity: 0.05,
-        shadowRadius: 2,
+        shadowRadius: 3,
       },
       android: {
         elevation: 4,
@@ -89,7 +90,7 @@ export const appStyles = StyleSheet.create({
   },
 
   navTextActive: {
-    color: '#3b82f6',
+    color: '#5188dfff',
     fontWeight: 'bold',
   },
 
@@ -194,5 +195,15 @@ export const appStyles = StyleSheet.create({
     fontWeight: '700',
     marginBottom: 20,
     color: '#111827',
+  },
+
+  profileIcon: {
+    position: 'absolute',
+    top: 40,
+    right: 16,
+    padding: 12,
+    backgroundColor: '#c7d2fe',
+    borderRadius: 30,
+    zIndex: 999,
   }
 });
