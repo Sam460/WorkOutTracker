@@ -2,30 +2,21 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
-const scale = screenWidth / 375;
 
 export const dashboardStyles = StyleSheet.create({
   metricContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'flex-start', // allow natural wrapping
+    justifyContent: 'space-between',
     marginBottom: 20,
   },
 
   metricCard: {
-    // Removed fixed flexBasis for dynamic sizing
-    padding: 16 * scale,
-    backgroundColor: '#ffffff',
-    borderRadius: 16 ,
-    marginRight: 12,
+    width: screenWidth < 768 ? '48%' : '30%', // Responsive: 2 on mobile, 3 on tablet/desktop
     marginBottom: 15,
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    alignSelf: 'flex-start', // shrink-wrap based on content
-    minWidth: 120, // keep small cards readable
-    maxWidth: screenWidth * 0.9, // prevent stretching too much
-
-    // Shadow
+    backgroundColor: '#ffffff',
+    padding: 20,
+    borderRadius: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -36,33 +27,29 @@ export const dashboardStyles = StyleSheet.create({
   metricHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 8 * scale,
-    flexWrap: 'wrap',
+    marginBottom: 10,
   },
 
   metricIcon: {
-    fontSize: 26 * scale,
-    marginRight: 8,
+    fontSize: 28,
+    marginRight: 10,
   },
 
   metricName: {
-    fontSize: 16 * scale,
+    fontSize: 18,
     fontWeight: '600',
     color: '#4b5563',
-    flexShrink: 1,
-    flexWrap: 'wrap',
   },
 
   metricValue: {
-    fontSize: 28 * scale,
+    fontSize: 32,
     fontWeight: 'bold',
     color: '#1f2937',
-    marginTop: 4,
-    flexShrink: 1,
+    marginTop: 5,
   },
 
   metricUnit: {
-    fontSize: 14 * scale,
+    fontSize: 16,
     color: '#6b7280',
     marginTop: 2,
   },

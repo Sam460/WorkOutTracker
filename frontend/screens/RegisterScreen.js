@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
-import { commonStyles } from '../styles/commonStyles';
+import { loginStyles } from '../styles/loginStyles';
 
 const RegisterScreen = () => {
   const { register } = useContext(AuthContext);
@@ -17,19 +17,19 @@ const RegisterScreen = () => {
 
   return (
     <View style={{ padding: 24 }}>
-      <Text style={commonStyles.cardTitle}>Register</Text>
+      <Text style={loginStyles.cardTitle}>Register</Text>
       <TextInput
         placeholder="Username"
         value={username}
         onChangeText={setUsername}
-        style={commonStyles.formInput}
+        style={loginStyles.formInput}
         autoCapitalize="words"
       />
       <TextInput
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
-        style={commonStyles.formInput}
+        style={loginStyles.formInput}
         autoCapitalize="none"
       />
       <TextInput
@@ -37,10 +37,10 @@ const RegisterScreen = () => {
         value={password}
         onChangeText={setPassword}
         secureTextEntry
-        style={commonStyles.formInput}
+        style={loginStyles.formInput}
       />
-      <TouchableOpacity style={commonStyles.primaryButton} onPress={handleSubmit}>
-        <Text style={commonStyles.primaryButtonText}>Register</Text>
+      <TouchableOpacity style={loginStyles.primaryButton} onPress={handleSubmit}>
+        <Text style={loginStyles.primaryButtonText}>Register</Text>
       </TouchableOpacity>
     </View>
   );

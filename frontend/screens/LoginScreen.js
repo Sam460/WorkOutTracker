@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
-import { commonStyles } from '../styles/commonStyles';
+import { loginStyles } from '../styles/loginStyles'; // changed import to match usage
 
 const LoginScreen = () => {
   const { login } = useContext(AuthContext);
@@ -15,13 +15,13 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={{ padding: 24 }}>
-      <Text style={commonStyles.cardTitle}>Login</Text>
+    <View style={loginStyles.container}>
+      <Text style={loginStyles.cardTitle}>Login</Text>
       <TextInput
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
-        style={commonStyles.formInput}
+        style={loginStyles.formInput}
         autoCapitalize="none"
       />
       <TextInput
@@ -29,10 +29,13 @@ const LoginScreen = () => {
         value={password}
         onChangeText={setPassword}
         secureTextEntry
-        style={commonStyles.formInput}
+        style={loginStyles.formInput}
       />
-      <TouchableOpacity style={commonStyles.primaryButton} onPress={handleSubmit}>
-        <Text style={commonStyles.primaryButtonText}>Login</Text>
+      <TouchableOpacity
+        style={loginStyles.primaryButton}
+        onPress={handleSubmit}
+      >
+        <Text style={loginStyles.primaryButtonText}>Login</Text>
       </TouchableOpacity>
     </View>
   );

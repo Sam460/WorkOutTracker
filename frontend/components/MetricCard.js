@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 5,
-    justifyContent: 'flexible',
   },
   metricHeader: {
     flexDirection: 'row',
@@ -38,10 +37,10 @@ const styles = StyleSheet.create({
   },
   metricIcon: {
     fontSize: 26,
-    marginRight: 10,
+    marginRight: 3,
   },
   metricName: {
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: '600',
     color: '#4b5563',
   },

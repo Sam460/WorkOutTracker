@@ -14,7 +14,7 @@ const windowWidth = Dimensions.get('window').width;
 const isDesktop = windowWidth >= 768;
 
 const MainApp = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout, login, register } = useContext(AuthContext); // added login & register from context
   const [activeView, setActiveView] = useState('dashboard');
   const [authView, setAuthView] = useState(null); // null | 'login' | 'register'
 
@@ -47,7 +47,11 @@ const MainApp = () => {
     if (!authView) return null;
     return (
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: '#ffffffee', justifyContent: 'center' }}>
-        {authView === 'login' ? <LoginScreen /> : <RegisterScreen />}
+        {authView === 'login' ? (
+          <LoginScreen onLogin={login} /> // pass login from AuthContext
+        ) : (
+          <RegisterScreen onRegister={register} /> // pass register from AuthContext
+        )}
         <TouchableOpacity
           onPress={() => setAuthView(authView === 'login' ? 'register' : 'login')}
           style={{ alignItems: 'center', marginTop: 16 }}
