@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
-import { loginStyles } from '../styles/loginStyles'; // changed import to match usage
+import { loginStyles } from '../styles/loginStyles'; 
 
 const LoginScreen = () => {
   const { login } = useContext(AuthContext);
